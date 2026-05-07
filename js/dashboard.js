@@ -1,4 +1,5 @@
 const loggedUser = JSON.parse(localStorage.getItem("user"));
+const token = localStorage.getItem("token");
 
 const panelName = document.getElementById("panelName");
 const roleBadge = document.getElementById("roleBadge");
@@ -8,7 +9,7 @@ const dashboardContent = document.getElementById("dashboardContent");
 const logoutButton = document.getElementById("logoutButton");
 
 const roles = {
-    usuario: {
+    user: {
         panel: "Panel de Usuario",
         badge: "Usuario",
         description: "Desde este panel puedes revisar tus rutinas, clases disponibles y progreso personal.",
@@ -69,7 +70,7 @@ const roles = {
     }
 };
 
-if (!loggedUser) {
+if (!loggedUser || !token) {
     window.location.href = "login.html";
 } else {
     loadDashboard(loggedUser);
@@ -80,13 +81,17 @@ function loadDashboard(user) {
 
     if (!roleInfo) {
         localStorage.removeItem("user");
+        localStorage.removeItem("token");
         window.location.href = "login.html";
         return;
     }
 
     panelName.textContent = roleInfo.panel;
     roleBadge.textContent = roleInfo.badge;
-    welcomeUser.textContent = "Bienvenido, " + user.name;
+
+    const userName = user.full_name || user.name || "Usuario";
+    welcomeUser.textContent = "Bienvenido, " + userName;
+
     roleDescription.textContent = roleInfo.description;
 
     dashboardContent.innerHTML = "";
@@ -110,5 +115,6 @@ function loadDashboard(user) {
 
 logoutButton.addEventListener("click", function() {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     window.location.href = "login.html";
 });
