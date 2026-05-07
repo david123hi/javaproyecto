@@ -87,14 +87,30 @@ body {
     margin-bottom: 30px;
 }
 
-.btn-primary {
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
     display: inline-block;
-    background: linear-gradient(135deg, #4338ca, #7c3aed);
-    color: #ffffff;
     padding: 14px 24px;
     text-decoration: none;
     border-radius: 10px;
     font-weight: 600;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4338ca, #7c3aed);
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: #4338ca;
+    border: 1px solid #c7d2fe;
 }
 
 .hero-card {
@@ -127,13 +143,13 @@ body {
     font-size: 14px;
 }
 
-/* LOGIN */
+/* AUTH */
 
 .login-page {
     background: linear-gradient(135deg, #eef2ff, #f8fafc);
 }
 
-.login-wrapper {
+.auth-wrapper {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -141,31 +157,31 @@ body {
     padding: 20px;
 }
 
-.login-card {
-    width: 420px;
+.auth-card {
+    width: 430px;
     background: #ffffff;
     padding: 38px;
     border-radius: 20px;
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
 }
 
-.login-header {
+.auth-header {
     text-align: center;
     margin-bottom: 28px;
 }
 
-.login-header h1 {
+.auth-header h1 {
     font-size: 30px;
     color: #111827;
     margin-bottom: 8px;
 }
 
-.login-header p {
+.auth-header p {
     color: #6b7280;
     font-size: 15px;
 }
 
-.login-form {
+.auth-form {
     width: 100%;
 }
 
@@ -200,7 +216,15 @@ body {
     color: #dc2626;
     font-size: 14px;
     text-align: center;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    min-height: 22px;
+    color: #16a34a;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .btn-login {
@@ -222,7 +246,7 @@ body {
 .btn-back {
     display: block;
     text-align: center;
-    margin-top: 18px;
+    margin-top: 14px;
     padding: 12px;
     border-radius: 10px;
     border: 1px solid #e5e7eb;
@@ -367,6 +391,11 @@ body {
         text-align: center;
     }
 
+    .nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
     .hero {
         padding: 40px 5%;
     }
@@ -375,7 +404,7 @@ body {
         font-size: 34px;
     }
 
-    .login-card {
+    .auth-card {
         width: 100%;
         padding: 28px;
     }

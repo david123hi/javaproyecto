@@ -1,7 +1,8 @@
-const API_URL = "db.json";
+const API_URL = "http://localhost:3000/api/auth/login";
 
 const loginForm = document.getElementById("loginForm");
 const errorMessage = document.getElementById("errorMessage");
+const successMessage = document.getElementById("successMessage");
 
 loginForm.addEventListener("submit", async function(event) {
     event.preventDefault();
@@ -9,50 +10,77 @@ loginForm.addEventListener("submit", async function(event) {
     const emailInput = document.getElementById("email").value.trim().toLowerCase();
     const passwordInput = document.getElementById("password").value.trim();
 
-    errorMessage.textContent = "";
+    clearMessages();
 
     if (emailInput === "" || passwordInput === "") {
         showError("Debes completar todos los campos.");
         return;
     }
 
+    if (!isValidEmail(emailInput)) {
+        showError("Debes ingresar un correo válido.");
+        return;
+    }
+
     try {
-        const response = await fetch(API_URL);
-
-        if (!response.ok) {
-            showError("Error al cargar los usuarios.");
-            return;
-        }
-
-        const data = await response.json();
-        const users = data.users;
-
-        const foundUser = users.find(function(user) {
-            return user.email.toLowerCase() === emailInput && user.password === passwordInput;
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: emailInput,
+                password: passwordInput
+            })
         });
 
-        if (!foundUser) {
-            showError("Credenciales incorrectas. Verifica tu correo o contraseña.");
+        const result = await response.json();
+
+        if (!response.ok || result.ok === false) {
+            showError(result.message || "Credenciales inválidas.");
             return;
         }
 
-        const loggedUser = {
-            id: foundUser.id,
-            name: foundUser.name,
-            email: foundUser.email,
-            role: foundUser.role
-        };
+        const token = result.data?.token;
+        const user = result.data?.user;
 
-        localStorage.setItem("user", JSON.stringify(loggedUser));
+        if (!token || !user) {
+            showError("El servidor no devolvió token o usuario.");
+            console.log("Respuesta del backend:", result);
+            return;
+        }
 
-        window.location.href = "dashboard.html";
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+
+        showSuccess("Login exitoso. Redirigiendo...");
+
+        setTimeout(function() {
+            window.location.href = "dashboard.html";
+        }, 700);
 
     } catch (error) {
-        showError("No se pudieron cargar los datos. Revisa que db.json exista.");
+        showError("No se pudo conectar con el backend. Revisa que el servidor esté encendido.");
         console.error("Error:", error);
     }
 });
 
+function isValidEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
 function showError(message) {
     errorMessage.textContent = message;
+    successMessage.textContent = "";
+}
+
+function showSuccess(message) {
+    successMessage.textContent = message;
+    errorMessage.textContent = "";
+}
+
+function clearMessages() {
+    errorMessage.textContent = "";
+    successMessage.textContent = "";
 }
