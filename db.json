@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Usuario Uno",
+      "email": "user1@sportclub.cl",
+      "password": "1234",
+      "role": "usuario"
+    },
+    {
+      "id": 2,
+      "name": "Usuario Dos",
+      "email": "user2@sportclub.cl",
+      "password": "1234",
+      "role": "usuario"
+    },
+    {
+      "id": 3,
+      "name": "Coach Uno",
+      "email": "coach1@sportclub.cl",
+      "password": "1234",
+      "role": "coach"
+    },
+    {
+      "id": 4,
+      "name": "Coach Dos",
+      "email": "coach2@sportclub.cl",
+      "password": "1234",
+      "role": "coach"
+    },
+    {
+      "id": 5,
+      "name": "Administrador Uno",
+      "email": "admin1@sportclub.cl",
+      "password": "1234",
+      "role": "admin"
+    },
+    {
+      "id": 6,
+      "name": "Administrador Dos",
+      "email": "admin2@sportclub.cl",
+      "password": "1234",
+      "role": "admin"
+    }
+  ]
+}
