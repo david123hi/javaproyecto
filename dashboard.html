@@ -3,33 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportClub | Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Dashboard - SportClub</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-    <header class="dashboard-header">
-        <div>
-            <h2>SportClub</h2>
-            <p id="panelName">Panel</p>
-        </div>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand">SportClub</div>
 
-        <button id="logoutButton" class="logout-button">Cerrar Sesión</button>
-    </header>
+            <div class="sidebar-user">
+                <div class="avatar-mini" id="avatarText">U</div>
+                <div>
+                    <h4 id="sidebarName">Usuario</h4>
+                    <p id="sidebarRole">Rol</p>
+                </div>
+            </div>
 
-    <main class="dashboard-container">
+            <nav class="menu">
+                <a href="./dashboard.html" class="active">🏠 Dashboard</a>
+                <a href="./users.html" class="admin-only">👥 Usuarios</a>
+                <a href="./deportes.html" class="admin-only">🏅 Deportes</a>
+                <a href="./equipos.html" class="admin-only">👕 Equipos</a>
+                <a href="./entrenamientos.html" class="admin-only">📅 Entrenamientos</a>
+                <a href="./reportes.html" class="admin-only">📊 Reportes</a>
+                <div class="menu-divider"></div>
+                <a href="./perfil.html">👤 Perfil</a>
+            </nav>
 
-        <section class="dashboard-welcome">
-            <span id="roleBadge" class="dashboard-role">Rol</span>
-            <h1 id="welcomeUser">Bienvenido</h1>
-            <p id="roleDescription"></p>
-        </section>
+            <div class="logout-area">
+                <button id="logoutBtn" class="logout-btn">🚪 Cerrar sesión</button>
+            </div>
+        </aside>
 
-        <section id="dashboardContent" class="dashboard-grid">
-        </section>
+        <main class="main">
+            <header class="topbar">
+                <h2>Sistema Deportivo</h2>
+                <div id="topbarUser" class="topbar-user"></div>
+            </header>
 
-    </main>
+            <section class="content">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                        <p>Panel principal de administración SportClub</p>
+                    </div>
+                </div>
 
-    <script src="js/dashboard.js"></script>
+                <div class="admin-summary">
+                    <div class="summary-card">
+                        <span>Usuarios</span>
+                        <strong id="usersCount">0</strong>
+                        <p>Total de cuentas registradas</p>
+                    </div>
+
+                    <div class="summary-card">
+                        <span>Deportes</span>
+                        <strong id="sportsCount">0</strong>
+                        <p>Disciplinas disponibles</p>
+                    </div>
+
+                    <div class="summary-card">
+                        <span>Equipos</span>
+                        <strong id="teamsCount">0</strong>
+                        <p>Equipos creados</p>
+                    </div>
+
+                    <div class="summary-card">
+                        <span>Entrenamientos</span>
+                        <strong id="trainingsCount">0</strong>
+                        <p>Sesiones registradas</p>
+                    </div>
+                </div>
+
+                <div class="grid-3">
+                    <div class="stat-card">
+                        <h3>Gestión de Usuarios</h3>
+                        <p>Crear, editar, eliminar y revisar cuentas activas o desactivadas.</p>
+                        <br>
+                        <a href="./users.html" class="admin-only">
+                            <button class="btn btn-primary">Ir a usuarios</button>
+                        </a>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Entrenamientos</h3>
+                        <p>Organiza sesiones por deporte, equipo, fecha y duración.</p>
+                        <br>
+                        <a href="./entrenamientos.html" class="admin-only">
+                            <button class="btn btn-success">Ir a entrenamientos</button>
+                        </a>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Reportes Mensuales</h3>
+                        <p>Consulta estadísticas por mes de usuarios, equipos y entrenamientos.</p>
+                        <br>
+                        <a href="./reportes.html" class="admin-only">
+                            <button class="btn btn-warning">Ver reportes</button>
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Resumen del sistema</h3>
+                    </div>
+
+                    <p>
+                        Este panel permite administrar usuarios, deportes, equipos,
+                        entrenamientos y reportes del sistema SportClub.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/adminData.js"></script>
+    <script src="./js/dashboard.js"></script>
 </body>
 </html>
