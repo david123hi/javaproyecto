@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrenamientos - SportClub</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand">SportClub</div>
+
+            <div class="sidebar-user">
+                <div class="avatar-mini" id="avatarText">U</div>
+                <div>
+                    <h4 id="sidebarName">Usuario</h4>
+                    <p id="sidebarRole">Rol</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <a href="./dashboard.html">🏠 Dashboard</a>
+                <a href="./users.html" class="admin-only">👥 Usuarios</a>
+                <a href="./deportes.html" class="admin-only">🏅 Deportes</a>
+                <a href="./equipos.html" class="admin-only">👕 Equipos</a>
+                <a href="./entrenamientos.html" class="active admin-only">📅 Entrenamientos</a>
+                <a href="./reportes.html" class="admin-only">📊 Reportes</a>
+                <div class="menu-divider"></div>
+                <a href="./perfil.html">👤 Perfil</a>
+            </nav>
+
+            <div class="logout-area">
+                <button id="logoutBtn" class="logout-btn">🚪 Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <h2>Sistema Deportivo</h2>
+                <div id="topbarUser" class="topbar-user"></div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h1>Entrenamientos</h1>
+                        <p>Programa sesiones de entrenamiento para los equipos</p>
+                    </div>
+
+                    <button id="newTrainingBtn" class="btn btn-primary">➕ Nuevo Entrenamiento</button>
+                </div>
+
+                <div id="trainingsMessage" class="message"></div>
+
+                <div class="module-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Lista de Entrenamientos</h3>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Título</th>
+                                        <th>Equipo</th>
+                                        <th>Deporte</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="trainingsTableBody">
+                                    <tr>
+                                        <td colspan="8">Cargando entrenamientos...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="trainingFormCard" class="card hidden">
+                        <div class="card-header">
+                            <h3 id="trainingFormTitle">Nuevo Entrenamiento</h3>
+                        </div>
+
+                        <form id="trainingForm">
+                            <input type="hidden" id="trainingId">
+
+                            <div class="form-group">
+                                <label for="trainingTitle">Título</label>
+                                <input class="form-control" type="text" id="trainingTitle" placeholder="Ej: Entrenamiento físico">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="trainingTeam">Equipo</label>
+                                <select class="form-control" id="trainingTeam"></select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="trainingDate">Fecha</label>
+                                <input class="form-control" type="date" id="trainingDate">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="trainingHour">Hora</label>
+                                <input class="form-control" type="time" id="trainingHour">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="trainingDuration">Duración en minutos</label>
+                                <input class="form-control" type="number" id="trainingDuration" min="30" placeholder="Ej: 90">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="trainingStatus">Estado</label>
+                                <select class="form-control" id="trainingStatus">
+                                    <option value="scheduled">Programado</option>
+                                    <option value="completed">Realizado</option>
+                                    <option value="cancelled">Cancelado</option>
+                                </select>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" id="cancelTrainingBtn" class="btn btn-secondary">Cancelar</button>
+                                <button type="submit" class="btn btn-success">💾 Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Información</strong>
+                    <br>
+                    Los entrenamientos se usan para generar reportes mensuales.
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/adminData.js"></script>
+    <script src="./js/entrenamientos.js"></script>
+</body>
+</html>
