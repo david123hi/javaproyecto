@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deportes - SportClub</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand">SportClub</div>
+
+            <div class="sidebar-user">
+                <div class="avatar-mini" id="avatarText">U</div>
+                <div>
+                    <h4 id="sidebarName">Usuario</h4>
+                    <p id="sidebarRole">Rol</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <a href="./dashboard.html">🏠 Dashboard</a>
+                <a href="./users.html" class="admin-only">👥 Usuarios</a>
+                <a href="./deportes.html" class="active admin-only">🏅 Deportes</a>
+                <a href="./equipos.html" class="admin-only">👕 Equipos</a>
+                <a href="./entrenamientos.html" class="admin-only">📅 Entrenamientos</a>
+                <a href="./reportes.html" class="admin-only">📊 Reportes</a>
+                <div class="menu-divider"></div>
+                <a href="./perfil.html">👤 Perfil</a>
+            </nav>
+
+            <div class="logout-area">
+                <button id="logoutBtn" class="logout-btn">🚪 Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <h2>Sistema Deportivo</h2>
+                <div id="topbarUser" class="topbar-user"></div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h1>Deportes</h1>
+                        <p>Administra las disciplinas deportivas disponibles</p>
+                    </div>
+
+                    <button id="newSportBtn" class="btn btn-primary">➕ Nuevo Deporte</button>
+                </div>
+
+                <div id="sportsMessage" class="message"></div>
+
+                <div class="module-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Lista de Deportes</h3>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Categoría</th>
+                                        <th>Estado</th>
+                                        <th>Fecha registro</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sportsTableBody">
+                                    <tr>
+                                        <td colspan="6">Cargando deportes...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="sportFormCard" class="card hidden">
+                        <div class="card-header">
+                            <h3 id="sportFormTitle">Nuevo Deporte</h3>
+                        </div>
+
+                        <form id="sportForm">
+                            <input type="hidden" id="sportId">
+
+                            <div class="form-group">
+                                <label for="sportName">Nombre del deporte</label>
+                                <input class="form-control" type="text" id="sportName" placeholder="Ej: Vóleibol">
+                                <small id="sportNameError" class="error-text"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sportCategory">Categoría</label>
+                                <select class="form-control" id="sportCategory">
+                                    <option value="Colectivo">Colectivo</option>
+                                    <option value="Individual">Individual</option>
+                                    <option value="Mixto">Mixto</option>
+                                </select>
+                                <small id="sportCategoryError" class="error-text"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sportStatus">Estado</label>
+                                <select class="form-control" id="sportStatus">
+                                    <option value="active">Activo</option>
+                                    <option value="inactive">Inactivo</option>
+                                </select>
+                                <small id="sportStatusError" class="error-text"></small>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" id="cancelSportBtn" class="btn btn-secondary">Cancelar</button>
+                                <button type="submit" class="btn btn-success">💾 Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Información</strong>
+                    <br>
+                    Los deportes se utilizan para crear equipos y entrenamientos.
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/adminData.js"></script>
+    <script src="./js/deportes.js"></script>
+</body>
+</html>
