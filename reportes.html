@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes - SportClub</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand">SportClub</div>
+
+            <div class="sidebar-user">
+                <div class="avatar-mini" id="avatarText">U</div>
+                <div>
+                    <h4 id="sidebarName">Usuario</h4>
+                    <p id="sidebarRole">Rol</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <a href="./dashboard.html">🏠 Dashboard</a>
+                <a href="./users.html" class="admin-only">👥 Usuarios</a>
+                <a href="./deportes.html" class="admin-only">🏅 Deportes</a>
+                <a href="./equipos.html" class="admin-only">👕 Equipos</a>
+                <a href="./entrenamientos.html" class="admin-only">📅 Entrenamientos</a>
+                <a href="./reportes.html" class="active admin-only">📊 Reportes</a>
+                <div class="menu-divider"></div>
+                <a href="./perfil.html">👤 Perfil</a>
+            </nav>
+
+            <div class="logout-area">
+                <button id="logoutBtn" class="logout-btn">🚪 Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <h2>Sistema Deportivo</h2>
+                <div id="topbarUser" class="topbar-user"></div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h1>Reportes</h1>
+                        <p>Consulta reportes mensuales del sistema</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Filtro del reporte</h3>
+                    </div>
+
+                    <div class="filter-row">
+                        <div class="form-group">
+                            <label for="reportMonth">Mes del reporte</label>
+                            <input class="form-control" type="month" id="reportMonth">
+                        </div>
+
+                        <button id="generateReportBtn" class="btn btn-primary">📊 Generar reporte</button>
+                    </div>
+                </div>
+
+                <div id="reportsMessage" class="message"></div>
+
+                <div class="admin-summary">
+                    <div class="summary-card">
+                        <span>Usuarios</span>
+                        <strong id="reportUsers">0</strong>
+                        <p>Total de usuarios registrados</p>
+                    </div>
+
+                    <div class="summary-card">
+                        <span>Cuentas activas</span>
+                        <strong id="reportActiveUsers">0</strong>
+                        <p>Usuarios habilitados</p>
+                    </div>
+
+                    <div class="summary-card">
+                        <span>Equipos</span>
+                        <strong id="reportTeams">0</strong>
+                        <p>Equipos creados</p>
+                    </div>
+
+                    <div class="summary-card">
+                        <span>Entrenamientos del mes</span>
+                        <strong id="reportTrainings">0</strong>
+                        <p>Sesiones programadas o realizadas</p>
+                    </div>
+                </div>
+
+                <div class="module-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 id="reportTitle">Reporte mensual</h3>
+                        </div>
+
+                        <div class="report-box">
+                            <h4>Resumen general</h4>
+                            <ul class="report-list" id="summaryList"></ul>
+                        </div>
+
+                        <div class="report-box">
+                            <h4>Distribución por rol</h4>
+                            <ul class="report-list" id="rolesList"></ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Entrenamientos del mes</h3>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Título</th>
+                                        <th>Equipo</th>
+                                        <th>Fecha</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="monthlyTrainingsTable">
+                                    <tr>
+                                        <td colspan="4">Genera un reporte para ver datos</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Información</strong>
+                    <br>
+                    Este reporte toma los usuarios desde la API del backend y los deportes, equipos y entrenamientos desde el almacenamiento local del frontend.
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/adminData.js"></script>
+    <script src="./js/reportes.js"></script>
+</body>
+</html>
