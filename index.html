@@ -3,59 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportClub | Inicio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>SportClub</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
+<body class="auth-body">
 
-    <header class="main-header">
-        <div class="brand">
-            <h2>SportClub</h2>
-        </div>
-
-        <nav class="nav">
-            <a href="index.html">Inicio</a>
-            <a href="login.html">Iniciar sesión</a>
-            <a href="register.html" class="nav-button">Registrarse</a>
+    <div class="auth-wrapper">
+        <nav class="auth-nav">
+            <a href="./index.html" class="active">Inicio</a>
+            <a href="./login.html">Iniciar sesión</a>
+            <a href="./register.html">Registrarse</a>
         </nav>
-    </header>
 
-    <main class="hero">
-        <section class="hero-content">
-            <span class="tag">Login y Registro con Backend</span>
-
-            <h1>Sistema de acceso SportClub</h1>
-
-            <p>
-                Plataforma conectada a una API real mediante fetch().
-                Permite iniciar sesión, registrar usuarios y mostrar un dashboard según el rol.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="login.html" class="btn-primary">Iniciar sesión</a>
-                <a href="register.html" class="btn-secondary">Crear cuenta</a>
-            </div>
-        </section>
-
-        <section class="hero-card">
-            <h3>Roles del sistema</h3>
-
-            <div class="role-box">
-                <h4>Usuario</h4>
-                <p>Puede revisar rutinas, progreso y clases disponibles.</p>
+        <div class="auth-card">
+            <div class="logo-box">
+                <h1>SportClub</h1>
+                <p>Sistema deportivo de gestión de usuarios</p>
             </div>
 
-            <div class="role-box">
-                <h4>Coach</h4>
-                <p>Puede gestionar alumnos, rutinas y evaluaciones.</p>
-            </div>
+            <a href="./login.html">
+                <button class="btn btn-primary btn-full">Iniciar sesión</button>
+            </a>
 
-            <div class="role-box">
-                <h4>Administrador</h4>
-                <p>Puede administrar usuarios, coaches y reportes.</p>
-            </div>
-        </section>
-    </main>
+            <br><br>
+
+            <a href="./register.html">
+                <button class="btn btn-success btn-full">Crear cuenta</button>
+            </a>
+        </div>
+    </div>
 
 </body>
 </html>
