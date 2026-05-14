@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - SportClub</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-brand">SportClub</div>
+
+            <div class="sidebar-user">
+                <div class="avatar-mini" id="avatarText">U</div>
+                <div>
+                    <h4 id="sidebarName">Usuario</h4>
+                    <p id="sidebarRole">Rol</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <a href="./dashboard.html" class="admin-only">🏠 Dashboard</a>
+                <a href="./users.html" class="admin-only">👥 Usuarios</a>
+                <a href="./deportes.html" class="admin-only">🏅 Deportes</a>
+                <a href="./equipos.html" class="admin-only">👕 Equipos</a>
+                <a href="./entrenamientos.html" class="admin-only">📅 Entrenamientos</a>
+                <a href="./reportes.html" class="admin-only">📊 Reportes</a>
+
+                <div class="menu-divider admin-only"></div>
+
+                <a href="./perfil.html" class="active">👤 Perfil</a>
+            </nav>
+
+            <div class="logout-area">
+                <button id="logoutBtn" class="logout-btn">🚪 Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <h2>Sistema Deportivo</h2>
+                <div id="topbarUser" class="topbar-user"></div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h1>Mi Perfil</h1>
+                        <p>Gestiona tu información personal</p>
+                    </div>
+
+                    <button id="editProfileBtn" class="btn btn-primary">✏️ Editar Perfil</button>
+                </div>
+
+                <div id="profileMessage" class="message"></div>
+
+                <div class="profile-grid">
+                    <div class="card profile-card">
+                        <div class="avatar-large" id="profileInitial">U</div>
+
+                        <h2 id="profileName">Usuario</h2>
+                        <p>Usuario del sistema</p>
+
+                        <div id="profileRoleBadge"></div>
+
+                        <div class="profile-info">
+                            <div class="profile-info-item">
+                                <strong>Email</strong>
+                                <span id="profileEmail">correo@demo.cl</span>
+                            </div>
+
+                            <div class="profile-info-item">
+                                <strong>Fecha de nacimiento</strong>
+                                <span id="profileBirthDate">Sin fecha</span>
+                            </div>
+
+                            <div class="profile-info-item">
+                                <strong>Rol</strong>
+                                <span id="profileRole">user</span>
+                            </div>
+
+                            <div class="profile-info-item">
+                                <strong>Estado</strong>
+                                <span id="profileStatus">activa</span>
+                            </div>
+
+                            <div class="profile-info-item">
+                                <strong>Fecha de registro</strong>
+                                <span id="profileCreatedAt">Sin fecha</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Datos personales</h3>
+                            </div>
+
+                            <form id="profileForm">
+                                <div class="grid-2">
+                                    <div class="form-group">
+                                        <label for="fullName">Nombre completo</label>
+                                        <input class="form-control" type="text" id="fullName" disabled>
+                                        <small id="fullNameError" class="error-text"></small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input class="form-control" type="email" id="email" disabled>
+                                        <small id="emailError" class="error-text"></small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="birthDate">Fecha de nacimiento</label>
+                                        <input class="form-control" type="date" id="birthDate" disabled>
+                                        <small id="birthDateError" class="error-text"></small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="favoriteSport">Deporte favorito</label>
+                                        <input class="form-control" type="text" id="favoriteSport" placeholder="Ej: Fútbol" disabled>
+                                        <small id="favoriteSportError" class="error-text"></small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="metadata">Otros / Metadata</label>
+                                    <textarea class="form-control" id="metadata" rows="4" placeholder="Intereses, habilidades, observaciones, etc." disabled></textarea>
+                                    <small id="metadataError" class="error-text"></small>
+                                </div>
+
+                                <div id="profileActions" class="form-actions hidden">
+                                    <button type="button" id="cancelProfileBtn" class="btn btn-secondary">Cancelar</button>
+                                    <button type="submit" class="btn btn-success">✅ Guardar cambios</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Seguridad</h3>
+                            </div>
+
+                            <form id="passwordForm">
+                                <div class="grid-2">
+                                    <div class="form-group">
+                                        <label for="currentPassword">Contraseña actual</label>
+                                        <input class="form-control" type="password" id="currentPassword" placeholder="Ingresa tu contraseña actual">
+                                        <small id="currentPasswordError" class="error-text"></small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="newPassword">Nueva contraseña</label>
+                                        <input class="form-control" type="password" id="newPassword" placeholder="Mínimo 8 caracteres">
+                                        <small id="newPasswordError" class="error-text"></small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="confirmNewPassword">Confirmar nueva contraseña</label>
+                                        <input class="form-control" type="password" id="confirmNewPassword" placeholder="Repite la nueva contraseña">
+                                        <small id="confirmNewPasswordError" class="error-text"></small>
+                                    </div>
+                                </div>
+
+                                <div class="info-box">
+                                    La contraseña debe tener al menos 8 caracteres y debe coincidir con la confirmación.
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">🔒 Actualizar contraseña</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Información</strong>
+                    <br>
+                    En este módulo el usuario puede actualizar sus datos personales y cambiar su contraseña.
+                    El correo electrónico y el rol permanecen bloqueados en el perfil.
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/perfil.js"></script>
+</body>
+</html>
